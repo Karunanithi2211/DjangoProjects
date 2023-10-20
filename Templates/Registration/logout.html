@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="container-fluid" style="margin-top: 100px;">
+    <div class="col-md-offset-4 col-md-4">
+        <h3>You have successfully logged out</h3>
+        <hr>
+        Login again <a href="{% url 'lo'%}">Login</a>
+    </div>
+</div>
+{% endblock %}

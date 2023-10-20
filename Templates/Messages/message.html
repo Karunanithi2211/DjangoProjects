@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Box</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'jquery/jquery341.min.js'%}"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-md-offset-4 col-md-4">
+            <center><h3 class="page-header text-primary text-center">AlertMessage</h3></center>
+            {% if messages %}
+                {% for msg in messages %}
+                    {%if msg.tags == 'error'%}
+                    <div class="alert alert-danger">
+                        {{msg}}
+                    </div>
+                    {%else%}
+                        <div class="alert alert-{{msg.tags}}">
+                            {{msg}}
+                        </div>
+                    {%endif%}
+                {% endfor %}
+            {% endif %}
+            <a class="btn btn-success" href="{% url 'success' %}">Success</a>
+            <a class="btn btn-info" href="{% url 'info' %}">Info</a>
+            <a class="btn btn-warning" href="{% url 'warning' %}">Warning</a>
+            <a class="btn btn-danger" href="{% url 'danger' %}">Danger</a>
+        </div>
+    </div>  
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $(".alert").hide(4000);
+    });
+</script>
